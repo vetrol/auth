@@ -2,9 +2,9 @@
 
 namespace Vetrol\Auth\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Contracts\Auth\MustVerifyEmail as MustVerifyEmailContract;
 use Illuminate\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail as MustVerifyEmailContract;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Vetrol\Auth\Exceptions\EmailAddressNotVerifiedException;
 
@@ -36,7 +36,7 @@ class UserEmailAddress extends Model implements MustVerifyEmailContract
     {
         $allowUnverified = config('vetrol-auth.allow_unverified_emails_as_primary', false);
 
-        if (!$allowUnverified && !$this->hasVerifiedEmail()) {
+        if (! $allowUnverified && ! $this->hasVerifiedEmail()) {
             throw new EmailAddressNotVerifiedException($this->email);
         }
 

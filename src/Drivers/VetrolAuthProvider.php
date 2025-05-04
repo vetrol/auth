@@ -26,7 +26,7 @@ class VetrolAuthProvider extends EloquentUserProvider
 
         $userFromUsersTable = $this->getUserByEmailFromUsersTable($credentials);
 
-        if (!$userFromUsersTable && $authenticateByAnyEmail) {
+        if (! $userFromUsersTable && $authenticateByAnyEmail) {
             return $this->getUserBySecondaryEmailAddress($credentials);
         }
 
@@ -62,7 +62,7 @@ class VetrolAuthProvider extends EloquentUserProvider
 
     private function getUserBySecondaryEmailAddress(array $credentials)
     {
-        $query = (new UserEmailAddress())->newQuery();
+        $query = (new UserEmailAddress)->newQuery();
 
         foreach ($credentials as $key => $value) {
             if (is_array($value) || $value instanceof Arrayable) {

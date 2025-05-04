@@ -39,15 +39,15 @@ class VetrolAuthServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../database/migrations/create_user_email_addresses_table.php' => database_path('migrations/'.date('Y-m-d_His').'_create_user_email_addresses_table.php'),
+                __DIR__.'/../database/migrations/create_user_email_addresses_table.php' => database_path('migrations/'.date('Y-m-d_His').'_create_user_email_addresses_table.php'),
             ], 'migrations');
 
             $this->publishes([
-                __DIR__ . '/../config/vetrol-auth.php' => config_path('vetrol-auth.php'),
+                __DIR__.'/../config/vetrol-auth.php' => config_path('vetrol-auth.php'),
             ], 'config');
 
             $this->publishes([
-                __DIR__ . '/../routes/web.php' => config_path('../routes/vetrol-auth.php'),
+                __DIR__.'/../routes/web.php' => config_path('../routes/vetrol-auth.php'),
             ], 'routes');
         }
     }

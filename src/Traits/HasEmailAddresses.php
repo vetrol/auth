@@ -2,8 +2,8 @@
 
 namespace Vetrol\Auth\Traits;
 
-use Vetrol\Auth\Models\UserEmailAddress;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Vetrol\Auth\Models\UserEmailAddress;
 
 trait HasEmailAddresses
 {

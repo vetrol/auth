@@ -2,13 +2,13 @@
 
 namespace Vetrol\Auth\Http\Controllers;
 
+use Illuminate\Auth\Events\Verified;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\URL;
 use Vetrol\Auth\Http\Requests\EmailAddressStoreRequest;
 use Vetrol\Auth\Models\UserEmailAddress;
-use Illuminate\Support\Facades\URL;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Auth\Events\Verified;
 
 class EmailAddressController extends Controller
 {
@@ -52,7 +52,7 @@ class EmailAddressController extends Controller
     {
         $emailAddress = UserEmailAddress::findOrFail($id);
 
-        if (!hash_equals((string)$hash, sha1($emailAddress->email))) {
+        if (! hash_equals((string) $hash, sha1($emailAddress->email))) {
             abort(403, 'Invalid verification link.');
         }
 

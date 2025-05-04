@@ -14,7 +14,7 @@ class EmailAddressStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => 'required|email|unique:' . config('vetrol-auth.user_email_addresses_table')
+            'email' => 'required|email|unique:'.config('vetrol-auth.user_email_addresses_table'),
         ];
     }
 }
